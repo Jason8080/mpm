@@ -25,6 +25,10 @@ public interface FlowTemplate {
     /**
      * 获取发起人节点.
      *
+     * <p>
+     *     注意: 这里的节点ID是模板节点ID, 并非正常的节点(存放的表不一样)
+     * </p>
+     *
      * @return 返回发起人节点 initial node
      */
     Long getInitialNode();
