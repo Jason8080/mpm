@@ -17,7 +17,5 @@ public interface NodeSnapshot extends Node {
      *
      * @return 返回编号.
      */
-    default Long getRecorderId(){
-        return UUID.randomUUID().getLeastSignificantBits();
-    }
+    Long getRecorderId();
 }

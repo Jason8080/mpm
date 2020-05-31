@@ -27,9 +27,14 @@ public interface Node {
      *
      * @return 默认UUID生成 id
      */
-    default Long getId() {
-        return UUID.randomUUID().getMostSignificantBits();
-    }
+    Long getId();
+
+    /**
+     * 获取流程ID.
+     *
+     * @return 返回流程编号 long
+     */
+    Long getFlowId();
 
     /**
      * 获取节点类型.
@@ -48,9 +53,7 @@ public interface Node {
      *
      * @return 默认为空节点 type
      */
-    default Integer getType() {
-        return 0;
-    }
+    Integer getType();
 
     /**
      * 获取节点形态.
@@ -60,9 +63,7 @@ public interface Node {
      *
      * @return 默认串形 form
      */
-    default Integer getForm() {
-        return SERIAL_NODE_FORM;
-    }
+    Integer getForm();
 
     /**
      * Sets form.
@@ -81,9 +82,7 @@ public interface Node {
      *
      * @return 默认自己. initial node
      */
-    default Long getInitialNode() {
-        return getId();
-    }
+    Long getInitialNode();
 
     /**
      * 获取下一节点.
@@ -94,9 +93,7 @@ public interface Node {
      *
      * @return 返回下一节点数组 long [ ]
      */
-    default Long[] nextIds() {
-        return new Long[]{getInitialNode()};
-    }
+    Long[] nextIds();
 
     /**
      * Sets next ids.
@@ -114,9 +111,7 @@ public interface Node {
      *
      * @return 上一节点数组 long [ ]
      */
-    default Long[] prevIds() {
-        return new Long[]{getInitialNode()};
-    }
+    Long[] prevIds();
 
     /**
      * Sets prev ids.
@@ -135,9 +130,7 @@ public interface Node {
      *
      * @return 返回必填的字段 : {  如果对必填字段的值有要求, 可存至value, 没有要求统一存null.  另外快照存储时value为真实提交的Value. }
      */
-    default Map<String,Object> requiredFields(){
-        return new HashMap(0);
-    }
+    Map<String,Object> requiredFields();
 
     /**
      * Sets required fields.
@@ -147,13 +140,29 @@ public interface Node {
     void setRequiredFields(Map<String, Object> requiredFields);
 
     /**
+     * 节点触发事件: 节点接收时间 .
+     *
+     * <p>
+     * 用于计算消耗时长
+     * </p>
+     *
+     * @return 返回节点处理时间. long
+     */
+    Long startTime();
+
+    /**
+     * Sets start time.
+     *
+     * @param startTime the start time
+     */
+    void setStartTime(Long startTime);
+
+    /**
      * 节点执行时间: 执行才有 .
      *
      * @return 返回节点处理时间. long
      */
-    default Long executionTime(){
-        return System.currentTimeMillis();
-    }
+    Long executionTime();
 
     /**
      * Sets execution time.
@@ -171,9 +180,7 @@ public interface Node {
      *
      * @return 返回执行人ID long
      */
-    default Long executor(){
-        return 0L;
-    }
+    Long executor();
 
     /**
      * Sets executor.
@@ -182,16 +189,4 @@ public interface Node {
      */
     void setExecutor(Long executor);
 
-    /**
-     * 当前节点执行快照.
-     *
-     * <p>
-     * 用于支撑随意跳跃指定节点执行
-     * </p>
-     *
-     * @return 返回当前节点的执行记录. list
-     */
-    default List<NodeSnapshot> snapshots(){
-        return new ArrayList();
-    }
 }
