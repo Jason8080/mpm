@@ -1,6 +1,7 @@
 package com.gm.mpm.bpm.flow;
 
-import java.util.List;
+import com.gm.mpm.bpm.node.NodeUnit;
+
 import java.util.Map;
 
 /**
@@ -36,30 +37,11 @@ public interface Flow {
     Integer END_FLOW_STATUS = 9;
 
     /**
-     * 发起流程.
+     * 获取发起人节点.
      *
-     * @param initiator 发起人
-     * @param template  流程模板
+     * @return 返回发起人节点
      */
-    void initiate(Long initiator, Long template);
-
-    /**
-     * 关闭流程.
-     *
-     * @param executor 执行人
-     * @param remark   备注
-     */
-    void close(Long executor, String remark);
-
-    /**
-     * 流程结束.
-     * <p>
-     * 设置流程状态
-     * 计算流程时长
-     * </p>
-     */
-    void end();
-
+    Long getInitialNode();
 
     /**
      * 获取流程状态.
@@ -119,18 +101,21 @@ public interface Flow {
      * 获取当前节点的执行人.
      *
      * <p>
+     *     Map<Long,Long>
+     *         Long: 执行节点
+     *         Long: 执行人
      * 获取当前待办人
      * </p>
      *
      * @return 返回当前节点的执行人数组(可能是并发). map
      */
-    Map<Long, Long> currentExecutor();
+    Map<Long, NodeUnit> currentExecutor();
 
     /**
      * Set current executor.
      *
      * @param currentExecutor the current executor
      */
-    void setCurrentExecutor(Long currentExecutor);
+    void setCurrentExecutor(NodeUnit currentExecutor);
 
 }

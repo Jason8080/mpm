@@ -1,6 +1,4 @@
-package com.gm.mpm.bpm.flow;
-
-import java.util.UUID;
+package com.gm.mpm.bpm.business.recorder;
 
 /**
  * 流程节点暂存接口.

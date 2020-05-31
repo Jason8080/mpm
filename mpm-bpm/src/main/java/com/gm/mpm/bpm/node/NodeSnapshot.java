@@ -1,8 +1,5 @@
 package com.gm.mpm.bpm.node;
 
-import java.util.Date;
-import java.util.UUID;
-
 /**
  * 流程节点执行记录器.
  * <p>
