@@ -1,11 +1,14 @@
-package com.gm.mpm.bpm.unit;
+package com.gm.mpm.bpm.sign;
 
 /**
- * 单位类型
+ * 执行单位
+ * <p>
+ *     可用于节点执行人 和 加签执行人/被加签执行人
+ * </p>
  *
  * @author Jason
  */
-public interface Ut {
+public interface SignUnit {
 
     /**
      * 获取单位类型ID.
@@ -24,7 +27,7 @@ public interface Ut {
     Integer getId();
 
     /**
-     * 获取当前节点颜色(根据节点的执行单位类型区分{{@link #getType()}}).
+     * 获取当前节点颜色(根据节点的执行单位类型区分{{@link #getId()} .
      *
      * @return the color
      */

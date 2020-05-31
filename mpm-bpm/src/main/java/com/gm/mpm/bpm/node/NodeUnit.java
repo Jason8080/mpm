@@ -1,6 +1,6 @@
 package com.gm.mpm.bpm.node;
 
-import com.gm.mpm.bpm.unit.Ut;
+import com.gm.mpm.bpm.sign.SignUnit;
 
 /**
  * 流程节点执行单位.
@@ -27,9 +27,9 @@ public interface NodeUnit {
      * 20. 部门
      * 30. 单位/公司
      * 40. 集团
-     * {{@link Ut#getId()} ()}}
+     * {{@link SignUnit#getId()} ()}}
      *
-     * @return 返回单位类型编号{{@link Ut#getId()} ()}
+     * @return 返回单位类型编号{{@link SignUnit#getId()} ()}
      */
     Integer getType();
 
