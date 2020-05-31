@@ -7,5 +7,5 @@ import com.gm.mpm.bpm.node.Node;
  * 与普通节点的区别是不用的存储表
  * @author Jason
  */
-public interface FlowNode extends Node {
+public interface FlowTemplateNode extends Node {
 }
