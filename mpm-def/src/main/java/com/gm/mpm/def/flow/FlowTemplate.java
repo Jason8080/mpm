@@ -16,6 +16,13 @@ public interface FlowTemplate {
     Long getId();
 
     /**
+     * 流程状态.
+     *
+     * @return the state
+     */
+    Integer getState();
+
+    /**
      * 发起时间.
      *
      * @return start time
@@ -32,7 +39,7 @@ public interface FlowTemplate {
     /**
      * 发起人.
      *
-     * @return
+     * @return unit id
      */
     Integer getUnitId();
 }
