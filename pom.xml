@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
+        <module>mpm-def</module>
         <module>mpm-portal</module>
         <module>mpm-rbac</module>
         <module>mpm-form</module>
