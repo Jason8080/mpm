@@ -36,6 +36,14 @@ public interface DefApi {
     Long top(Integer order, Integer unitId, Date dueTime);
 
     /**
+     * 重签.
+     *
+     * @param unitIds the unit ids
+     * @return 节点编号 long
+     */
+    Long rew(Integer... unitIds);
+
+    /**
      * 转发: 会起新流程.
      *
      * @param id      the id
