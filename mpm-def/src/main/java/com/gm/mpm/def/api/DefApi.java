@@ -12,11 +12,11 @@ public interface DefApi {
      * 加签.
      *
      * @param order   the order
-     * @param unitId  the unit id
      * @param dueTime the due time
+     * @param unitIds  the unit ids
      * @return 节点编号 long
      */
-    Long add(Integer order, Integer unitId, Date dueTime);
+    Long add(Integer order, Date dueTime, Integer... unitIds);
 
     /**
      * 减签.
@@ -29,29 +29,29 @@ public interface DefApi {
      * 会签.
      *
      * @param order   the order
-     * @param unitId  the unit id
      * @param dueTime the due time
+     * @param unitIds  the unit ids
      * @return 节点编号 long
      */
-    Long top(Integer order, Integer unitId, Date dueTime);
+    Long top(Integer order, Date dueTime, Integer... unitIds);
 
     /**
      * 重签.
      *
-     * @param unitIds the unit ids
+     * @param ids 节点编号
      * @return 节点编号 long
      */
-    Long rew(Integer... unitIds);
+    Long rew(Long... ids);
 
     /**
      * 转发: 会起新流程.
      *
      * @param id      the id
-     * @param unitId  the unit id
+     * @param unitIds  the unit ids
      * @param dueTime the due time
      * @return 节点编号 long
      */
-    void forward(Integer id, Integer unitId, Date dueTime);
+    void forward(Integer id, Date dueTime, Integer... unitIds);
 
     /**
      * 移交: 原流程换人执行.
