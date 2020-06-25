@@ -36,7 +36,17 @@ public interface DefApi {
     Long top(Integer order, Integer unitId, Date dueTime);
 
     /**
-     * 移交.
+     * 转发: 会起新流程.
+     *
+     * @param id      the id
+     * @param unitId  the unit id
+     * @param dueTime the due time
+     * @return 节点编号 long
+     */
+    void forward(Integer id, Integer unitId, Date dueTime);
+
+    /**
+     * 移交: 原流程换人执行.
      *
      * @param id      the id
      * @param unitId  the unit id
