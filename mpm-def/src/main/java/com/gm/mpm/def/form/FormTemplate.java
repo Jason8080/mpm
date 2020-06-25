@@ -7,7 +7,7 @@ package com.gm.mpm.def.form;
  */
 public interface FormTemplate {
     /**
-     * 节点ID.
+     * 表单ID.
      *
      * @return the id
      */
