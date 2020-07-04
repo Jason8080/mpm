@@ -13,12 +13,6 @@ public interface FormTemplate {
      */
     Long getId();
     /**
-     * 上级表单ID: 支持主从表(多级关系表).
-     *
-     * @return the id
-     */
-    Long getSuperior();
-    /**
      * 流程ID.
      *
      * @return

@@ -29,25 +29,11 @@ public interface FormOperTemplate {
     Integer getRequired();
 
     /**
-     * 是否可见.
+     * 权限标识: 类似Linux wrx.
      *
      * @return
      */
-    Integer getVisible();
-
-    /**
-     * 权限标识: 参照Linux wrx.
-     *
-     * @return
-     */
-    String getPermission();
-
-    /**
-     * 操作类型: 0-, 1input, 2checkbox, 3select, 4a, 5button
-     *
-     * @return
-     */
-    Integer getType();
+    String getCrud();
 
     /**
      * 操作状态.
