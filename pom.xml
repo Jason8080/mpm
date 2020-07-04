@@ -27,6 +27,7 @@
     <properties>
         <spring.cloud>Hoxton.SR3</spring.cloud>
         <spring.boot>2.2.5.RELEASE</spring.boot>
+        <mybatis.spring>2.1.2</mybatis.spring>
     </properties>
 
     <dependencyManagement>
