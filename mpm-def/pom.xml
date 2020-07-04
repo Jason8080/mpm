@@ -11,5 +11,11 @@
 
     <artifactId>mpm-def</artifactId>
 
-    
+    <dependencies>
+        <dependency>
+            <groupId>com.gm</groupId>
+            <artifactId>mpm-data</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>
