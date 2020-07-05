@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gm.mpm.data.mapper.EventMapper">
+  <resultMap id="BaseResultMap" type="com.gm.mpm.data.model.Event">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="node_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="type" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="triggers" javaType="java.lang.Boolean" jdbcType="BIT" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, node_id, type, triggers
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from event
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from event
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gm.mpm.data.model.Event">
+    insert into event (id, node_id, type, triggers
+      )
+    values (#{id,jdbcType=BIGINT}, #{nodeId,jdbcType=BIGINT}, #{type,jdbcType=BIT}, #{triggers,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gm.mpm.data.model.Event">
+    insert into event
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="nodeId != null">
+        node_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="triggers != null">
+        triggers,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="nodeId != null">
+        #{nodeId,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BIT},
+      </if>
+      <if test="triggers != null">
+        #{triggers,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gm.mpm.data.model.Event">
+    update event
+    <set>
+      <if test="nodeId != null">
+        node_id = #{nodeId,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=BIT},
+      </if>
+      <if test="triggers != null">
+        triggers = #{triggers,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gm.mpm.data.model.Event">
+    update event
+    set node_id = #{nodeId,jdbcType=BIGINT},
+      type = #{type,jdbcType=BIT},
+      triggers = #{triggers,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

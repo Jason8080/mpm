@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gm.mpm.data.mapper.NodeOperTemplateMapper">
+  <resultMap id="BaseResultMap" type="com.gm.mpm.data.model.NodeOperTemplate">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="flow_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="required" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="visible" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="type" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="oper_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="oper_value" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, flow_id, required, visible, type, oper_name, oper_value
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from node_oper_template
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from node_oper_template
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gm.mpm.data.model.NodeOperTemplate">
+    insert into node_oper_template (id, flow_id, required, 
+      visible, type, oper_name, oper_value
+      )
+    values (#{id,jdbcType=BIGINT}, #{flowId,jdbcType=BIGINT}, #{required,jdbcType=BIT}, 
+      #{visible,jdbcType=BIT}, #{type,jdbcType=BIT}, #{operName,jdbcType=VARCHAR}, #{operValue,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gm.mpm.data.model.NodeOperTemplate">
+    insert into node_oper_template
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="flowId != null">
+        flow_id,
+      </if>
+      <if test="required != null">
+        required,
+      </if>
+      <if test="visible != null">
+        visible,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="operName != null">
+        oper_name,
+      </if>
+      <if test="operValue != null">
+        oper_value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="flowId != null">
+        #{flowId,jdbcType=BIGINT},
+      </if>
+      <if test="required != null">
+        #{required,jdbcType=BIT},
+      </if>
+      <if test="visible != null">
+        #{visible,jdbcType=BIT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BIT},
+      </if>
+      <if test="operName != null">
+        #{operName,jdbcType=VARCHAR},
+      </if>
+      <if test="operValue != null">
+        #{operValue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gm.mpm.data.model.NodeOperTemplate">
+    update node_oper_template
+    <set>
+      <if test="flowId != null">
+        flow_id = #{flowId,jdbcType=BIGINT},
+      </if>
+      <if test="required != null">
+        required = #{required,jdbcType=BIT},
+      </if>
+      <if test="visible != null">
+        visible = #{visible,jdbcType=BIT},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=BIT},
+      </if>
+      <if test="operName != null">
+        oper_name = #{operName,jdbcType=VARCHAR},
+      </if>
+      <if test="operValue != null">
+        oper_value = #{operValue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gm.mpm.data.model.NodeOperTemplate">
+    update node_oper_template
+    set flow_id = #{flowId,jdbcType=BIGINT},
+      required = #{required,jdbcType=BIT},
+      visible = #{visible,jdbcType=BIT},
+      type = #{type,jdbcType=BIT},
+      oper_name = #{operName,jdbcType=VARCHAR},
+      oper_value = #{operValue,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

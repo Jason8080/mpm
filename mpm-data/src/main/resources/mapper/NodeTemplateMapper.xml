@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gm.mpm.data.mapper.NodeTemplateMapper">
+  <resultMap id="BaseResultMap" type="com.gm.mpm.data.model.NodeTemplate">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="flow_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="order" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="unit_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="due_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, flow_id, order, unit_id, due_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from node_template
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from node_template
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gm.mpm.data.model.NodeTemplate">
+    insert into node_template (id, flow_id, order, 
+      unit_id, due_time)
+    values (#{id,jdbcType=BIGINT}, #{flowId,jdbcType=BIGINT}, #{order,jdbcType=TINYINT}, 
+      #{unitId,jdbcType=INTEGER}, #{dueTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gm.mpm.data.model.NodeTemplate">
+    insert into node_template
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="flowId != null">
+        flow_id,
+      </if>
+      <if test="order != null">
+        order,
+      </if>
+      <if test="unitId != null">
+        unit_id,
+      </if>
+      <if test="dueTime != null">
+        due_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="flowId != null">
+        #{flowId,jdbcType=BIGINT},
+      </if>
+      <if test="order != null">
+        #{order,jdbcType=TINYINT},
+      </if>
+      <if test="unitId != null">
+        #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="dueTime != null">
+        #{dueTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gm.mpm.data.model.NodeTemplate">
+    update node_template
+    <set>
+      <if test="flowId != null">
+        flow_id = #{flowId,jdbcType=BIGINT},
+      </if>
+      <if test="order != null">
+        order = #{order,jdbcType=TINYINT},
+      </if>
+      <if test="unitId != null">
+        unit_id = #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="dueTime != null">
+        due_time = #{dueTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gm.mpm.data.model.NodeTemplate">
+    update node_template
+    set flow_id = #{flowId,jdbcType=BIGINT},
+      order = #{order,jdbcType=TINYINT},
+      unit_id = #{unitId,jdbcType=INTEGER},
+      due_time = #{dueTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

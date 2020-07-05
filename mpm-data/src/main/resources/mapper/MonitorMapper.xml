@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gm.mpm.data.mapper.MonitorMapper">
+  <resultMap id="BaseResultMap" type="com.gm.mpm.data.model.Monitor">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="node_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="start" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="pre" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="post" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="ex" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="after" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="end" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, node_id, start, pre, post, ex, after, end
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from monitor
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from monitor
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gm.mpm.data.model.Monitor">
+    insert into monitor (id, node_id, start, 
+      pre, post, ex, after, 
+      end)
+    values (#{id,jdbcType=BIGINT}, #{nodeId,jdbcType=BIGINT}, #{start,jdbcType=BIT}, 
+      #{pre,jdbcType=BIT}, #{post,jdbcType=BIT}, #{ex,jdbcType=BIT}, #{after,jdbcType=BIT}, 
+      #{end,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gm.mpm.data.model.Monitor">
+    insert into monitor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="nodeId != null">
+        node_id,
+      </if>
+      <if test="start != null">
+        start,
+      </if>
+      <if test="pre != null">
+        pre,
+      </if>
+      <if test="post != null">
+        post,
+      </if>
+      <if test="ex != null">
+        ex,
+      </if>
+      <if test="after != null">
+        after,
+      </if>
+      <if test="end != null">
+        end,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="nodeId != null">
+        #{nodeId,jdbcType=BIGINT},
+      </if>
+      <if test="start != null">
+        #{start,jdbcType=BIT},
+      </if>
+      <if test="pre != null">
+        #{pre,jdbcType=BIT},
+      </if>
+      <if test="post != null">
+        #{post,jdbcType=BIT},
+      </if>
+      <if test="ex != null">
+        #{ex,jdbcType=BIT},
+      </if>
+      <if test="after != null">
+        #{after,jdbcType=BIT},
+      </if>
+      <if test="end != null">
+        #{end,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gm.mpm.data.model.Monitor">
+    update monitor
+    <set>
+      <if test="nodeId != null">
+        node_id = #{nodeId,jdbcType=BIGINT},
+      </if>
+      <if test="start != null">
+        start = #{start,jdbcType=BIT},
+      </if>
+      <if test="pre != null">
+        pre = #{pre,jdbcType=BIT},
+      </if>
+      <if test="post != null">
+        post = #{post,jdbcType=BIT},
+      </if>
+      <if test="ex != null">
+        ex = #{ex,jdbcType=BIT},
+      </if>
+      <if test="after != null">
+        after = #{after,jdbcType=BIT},
+      </if>
+      <if test="end != null">
+        end = #{end,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gm.mpm.data.model.Monitor">
+    update monitor
+    set node_id = #{nodeId,jdbcType=BIGINT},
+      start = #{start,jdbcType=BIT},
+      pre = #{pre,jdbcType=BIT},
+      post = #{post,jdbcType=BIT},
+      ex = #{ex,jdbcType=BIT},
+      after = #{after,jdbcType=BIT},
+      end = #{end,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

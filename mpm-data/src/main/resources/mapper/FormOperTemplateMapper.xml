@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gm.mpm.data.mapper.FormOperTemplateMapper">
+  <resultMap id="BaseResultMap" type="com.gm.mpm.data.model.FormOperTemplate">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="flow_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="crud" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="required" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="state" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="oper_title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="oper_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="oper_value" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, flow_id, crud, required, state, oper_title, oper_name, oper_value
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from form_oper_template
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from form_oper_template
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.gm.mpm.data.model.FormOperTemplate">
+    insert into form_oper_template (id, flow_id, crud, 
+      required, state, oper_title, 
+      oper_name, oper_value)
+    values (#{id,jdbcType=BIGINT}, #{flowId,jdbcType=BIGINT}, #{crud,jdbcType=VARCHAR}, 
+      #{required,jdbcType=BIT}, #{state,jdbcType=BIT}, #{operTitle,jdbcType=VARCHAR}, 
+      #{operName,jdbcType=VARCHAR}, #{operValue,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gm.mpm.data.model.FormOperTemplate">
+    insert into form_oper_template
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="flowId != null">
+        flow_id,
+      </if>
+      <if test="crud != null">
+        crud,
+      </if>
+      <if test="required != null">
+        required,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="operTitle != null">
+        oper_title,
+      </if>
+      <if test="operName != null">
+        oper_name,
+      </if>
+      <if test="operValue != null">
+        oper_value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="flowId != null">
+        #{flowId,jdbcType=BIGINT},
+      </if>
+      <if test="crud != null">
+        #{crud,jdbcType=VARCHAR},
+      </if>
+      <if test="required != null">
+        #{required,jdbcType=BIT},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=BIT},
+      </if>
+      <if test="operTitle != null">
+        #{operTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="operName != null">
+        #{operName,jdbcType=VARCHAR},
+      </if>
+      <if test="operValue != null">
+        #{operValue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gm.mpm.data.model.FormOperTemplate">
+    update form_oper_template
+    <set>
+      <if test="flowId != null">
+        flow_id = #{flowId,jdbcType=BIGINT},
+      </if>
+      <if test="crud != null">
+        crud = #{crud,jdbcType=VARCHAR},
+      </if>
+      <if test="required != null">
+        required = #{required,jdbcType=BIT},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=BIT},
+      </if>
+      <if test="operTitle != null">
+        oper_title = #{operTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="operName != null">
+        oper_name = #{operName,jdbcType=VARCHAR},
+      </if>
+      <if test="operValue != null">
+        oper_value = #{operValue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gm.mpm.data.model.FormOperTemplate">
+    update form_oper_template
+    set flow_id = #{flowId,jdbcType=BIGINT},
+      crud = #{crud,jdbcType=VARCHAR},
+      required = #{required,jdbcType=BIT},
+      state = #{state,jdbcType=BIT},
+      oper_title = #{operTitle,jdbcType=VARCHAR},
+      oper_name = #{operName,jdbcType=VARCHAR},
+      oper_value = #{operValue,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
