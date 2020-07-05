@@ -18,7 +18,7 @@ public interface FlowApi {
     /**
      * 关闭流程.
      *
-     * @param State 关闭的状态: 0终止, 1完成
+     * @param id 关闭的状态: 0终止, 1完成
      */
-    void close(Integer State);
+    void close(Long id);
 }

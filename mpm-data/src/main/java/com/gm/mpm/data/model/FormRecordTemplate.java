@@ -9,11 +9,14 @@ public class FormRecordTemplate {
 
     private String value;
 
-    public FormRecordTemplate(Long id, Long flowId, String field, String value) {
+    private String old;
+
+    public FormRecordTemplate(Long id, Long flowId, String field, String value, String old) {
         this.id = id;
         this.flowId = flowId;
         this.field = field;
         this.value = value;
+        this.old = old;
     }
 
     public FormRecordTemplate() {
@@ -52,6 +55,14 @@ public class FormRecordTemplate {
         this.value = value == null ? null : value.trim();
     }
 
+    public String getOld() {
+        return old;
+    }
+
+    public void setOld(String old) {
+        this.old = old == null ? null : old.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -62,6 +73,7 @@ public class FormRecordTemplate {
         sb.append(", flowId=").append(flowId);
         sb.append(", field=").append(field);
         sb.append(", value=").append(value);
+        sb.append(", old=").append(old);
         sb.append("]");
         return sb.toString();
     }

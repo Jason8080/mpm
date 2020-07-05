@@ -9,11 +9,14 @@ public class FormRecord {
 
     private String value;
 
-    public FormRecord(Long id, Long flowId, String field, String value) {
+    private String old;
+
+    public FormRecord(Long id, Long flowId, String field, String value, String old) {
         this.id = id;
         this.flowId = flowId;
         this.field = field;
         this.value = value;
+        this.old = old;
     }
 
     public FormRecord() {
@@ -52,6 +55,14 @@ public class FormRecord {
         this.value = value == null ? null : value.trim();
     }
 
+    public String getOld() {
+        return old;
+    }
+
+    public void setOld(String old) {
+        this.old = old == null ? null : old.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -62,6 +73,7 @@ public class FormRecord {
         sb.append(", flowId=").append(flowId);
         sb.append(", field=").append(field);
         sb.append(", value=").append(value);
+        sb.append(", old=").append(old);
         sb.append("]");
         return sb.toString();
     }

@@ -9,14 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>mpm-bpm</artifactId>
+    <artifactId>mpm-common</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.gm</groupId>
-            <artifactId>mpm-data</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
 
 </project>

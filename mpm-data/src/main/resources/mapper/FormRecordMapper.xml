@@ -7,10 +7,11 @@
       <arg column="flow_id" javaType="java.lang.Long" jdbcType="BIGINT" />
       <arg column="field" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="value" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="old" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
-    id, flow_id, field, value
+    id, flow_id, field, value, old
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -24,9 +25,9 @@
   </delete>
   <insert id="insert" parameterType="com.gm.mpm.data.model.FormRecord">
     insert into form_record (id, flow_id, field, 
-      value)
+      value, old)
     values (#{id,jdbcType=BIGINT}, #{flowId,jdbcType=BIGINT}, #{field,jdbcType=VARCHAR}, 
-      #{value,jdbcType=VARCHAR})
+      #{value,jdbcType=VARCHAR}, #{old,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.gm.mpm.data.model.FormRecord">
     insert into form_record
@@ -43,6 +44,9 @@
       <if test="value != null">
         value,
       </if>
+      <if test="old != null">
+        old,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -56,6 +60,9 @@
       </if>
       <if test="value != null">
         #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="old != null">
+        #{old,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -71,6 +78,9 @@
       <if test="value != null">
         value = #{value,jdbcType=VARCHAR},
       </if>
+      <if test="old != null">
+        old = #{old,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -78,7 +88,8 @@
     update form_record
     set flow_id = #{flowId,jdbcType=BIGINT},
       field = #{field,jdbcType=VARCHAR},
-      value = #{value,jdbcType=VARCHAR}
+      value = #{value,jdbcType=VARCHAR},
+      old = #{old,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

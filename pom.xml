@@ -20,6 +20,7 @@
         <module>mpm-cache</module>
         <module>mpm-mq</module>
         <module>mpm-sso</module>
+        <module>mpm-common</module>
     </modules>
 
     <packaging>pom</packaging>
