@@ -64,4 +64,19 @@ public class Flow {
     public void setUnitId(Integer unitId) {
         this.unitId = unitId;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", state=").append(state);
+        sb.append(", startTime=").append(startTime);
+        sb.append(", endTime=").append(endTime);
+        sb.append(", unitId=").append(unitId);
+        sb.append("]");
+        return sb.toString();
+    }
 }

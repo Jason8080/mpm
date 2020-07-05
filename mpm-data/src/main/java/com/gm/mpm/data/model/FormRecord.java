@@ -51,4 +51,18 @@ public class FormRecord {
     public void setValue(String value) {
         this.value = value == null ? null : value.trim();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", flowId=").append(flowId);
+        sb.append(", field=").append(field);
+        sb.append(", value=").append(value);
+        sb.append("]");
+        return sb.toString();
+    }
 }

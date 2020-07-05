@@ -40,4 +40,17 @@ public class MonitorRecord {
     public void setResult(String result) {
         this.result = result == null ? null : result.trim();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", state=").append(state);
+        sb.append(", result=").append(result);
+        sb.append("]");
+        return sb.toString();
+    }
 }

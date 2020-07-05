@@ -73,4 +73,20 @@ public class FormDom {
     public void setDesc(String desc) {
         this.desc = desc == null ? null : desc.trim();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", formId=").append(formId);
+        sb.append(", action=").append(action);
+        sb.append(", method=").append(method);
+        sb.append(", enctype=").append(enctype);
+        sb.append(", desc=").append(desc);
+        sb.append("]");
+        return sb.toString();
+    }
 }

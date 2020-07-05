@@ -51,4 +51,18 @@ public class Unit {
     public void setSuperior(Integer superior) {
         this.superior = superior;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", foreignKey=").append(foreignKey);
+        sb.append(", name=").append(name);
+        sb.append(", superior=").append(superior);
+        sb.append("]");
+        return sb.toString();
+    }
 }

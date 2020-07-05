@@ -84,4 +84,21 @@ public class FormOper {
     public void setOperValue(String operValue) {
         this.operValue = operValue == null ? null : operValue.trim();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", flowId=").append(flowId);
+        sb.append(", crud=").append(crud);
+        sb.append(", required=").append(required);
+        sb.append(", state=").append(state);
+        sb.append(", operName=").append(operName);
+        sb.append(", operValue=").append(operValue);
+        sb.append("]");
+        return sb.toString();
+    }
 }

@@ -107,4 +107,22 @@ public class Log {
     public void setDetail(String detail) {
         this.detail = detail == null ? null : detail.trim();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", operator=").append(operator);
+        sb.append(", item=").append(item);
+        sb.append(", state=").append(state);
+        sb.append(", time=").append(time);
+        sb.append(", result=").append(result);
+        sb.append(", foreignKey=").append(foreignKey);
+        sb.append(", detail=").append(detail);
+        sb.append("]");
+        return sb.toString();
+    }
 }

@@ -40,4 +40,17 @@ public class MonitorInstance {
     public void setMethods(String methods) {
         this.methods = methods == null ? null : methods.trim();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", classes=").append(classes);
+        sb.append(", methods=").append(methods);
+        sb.append("]");
+        return sb.toString();
+    }
 }

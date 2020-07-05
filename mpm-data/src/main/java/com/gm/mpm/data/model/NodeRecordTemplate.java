@@ -75,4 +75,20 @@ public class NodeRecordTemplate {
     public void setMeans(String means) {
         this.means = means == null ? null : means.trim();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", flowId=").append(flowId);
+        sb.append(", state=").append(state);
+        sb.append(", startTime=").append(startTime);
+        sb.append(", endTime=").append(endTime);
+        sb.append(", means=").append(means);
+        sb.append("]");
+        return sb.toString();
+    }
 }

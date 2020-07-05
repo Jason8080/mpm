@@ -95,4 +95,22 @@ public class Monitor {
     public void setEnd(String end) {
         this.end = end == null ? null : end.trim();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", nodeId=").append(nodeId);
+        sb.append(", start=").append(start);
+        sb.append(", pre=").append(pre);
+        sb.append(", post=").append(post);
+        sb.append(", ex=").append(ex);
+        sb.append(", after=").append(after);
+        sb.append(", end=").append(end);
+        sb.append("]");
+        return sb.toString();
+    }
 }

@@ -41,4 +41,17 @@ public class FormDomWithBLOBs extends FormDom {
     public void setJs(String js) {
         this.js = js == null ? null : js.trim();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", dom=").append(dom);
+        sb.append(", css=").append(css);
+        sb.append(", js=").append(js);
+        sb.append("]");
+        return sb.toString();
+    }
 }
