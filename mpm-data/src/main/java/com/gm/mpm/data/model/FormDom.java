@@ -11,15 +11,12 @@ public class FormDom {
 
     private String enctype;
 
-    private String desc;
-
-    public FormDom(Long id, Long formId, String action, String method, String enctype, String desc) {
+    public FormDom(Long id, Long formId, String action, String method, String enctype) {
         this.id = id;
         this.formId = formId;
         this.action = action;
         this.method = method;
         this.enctype = enctype;
-        this.desc = desc;
     }
 
     public FormDom() {
@@ -66,14 +63,6 @@ public class FormDom {
         this.enctype = enctype == null ? null : enctype.trim();
     }
 
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -85,7 +74,6 @@ public class FormDom {
         sb.append(", action=").append(action);
         sb.append(", method=").append(method);
         sb.append(", enctype=").append(enctype);
-        sb.append(", desc=").append(desc);
         sb.append("]");
         return sb.toString();
     }

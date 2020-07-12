@@ -8,7 +8,6 @@
       <arg column="action" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="method" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="enctype" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="desc" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.gm.mpm.data.model.FormDomWithBLOBs">
@@ -18,14 +17,13 @@
       <arg column="action" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="method" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="enctype" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="desc" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="dom" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
       <arg column="css" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
       <arg column="js" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
-    id, form_id, action, method, enctype, desc
+    id, form_id, action, method, enctype
   </sql>
   <sql id="Blob_Column_List">
     dom, css, js
@@ -44,13 +42,11 @@
   </delete>
   <insert id="insert" parameterType="com.gm.mpm.data.model.FormDomWithBLOBs">
     insert into form_dom (id, form_id, action, 
-      method, enctype, desc, 
-      dom, css, js
-      )
+      method, enctype, dom, 
+      css, js)
     values (#{id,jdbcType=BIGINT}, #{formId,jdbcType=BIGINT}, #{action,jdbcType=VARCHAR}, 
-      #{method,jdbcType=VARCHAR}, #{enctype,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}, 
-      #{dom,jdbcType=LONGVARCHAR}, #{css,jdbcType=LONGVARCHAR}, #{js,jdbcType=LONGVARCHAR}
-      )
+      #{method,jdbcType=VARCHAR}, #{enctype,jdbcType=VARCHAR}, #{dom,jdbcType=LONGVARCHAR}, 
+      #{css,jdbcType=LONGVARCHAR}, #{js,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.gm.mpm.data.model.FormDomWithBLOBs">
     insert into form_dom
@@ -69,9 +65,6 @@
       </if>
       <if test="enctype != null">
         enctype,
-      </if>
-      <if test="desc != null">
-        desc,
       </if>
       <if test="dom != null">
         dom,
@@ -99,9 +92,6 @@
       <if test="enctype != null">
         #{enctype,jdbcType=VARCHAR},
       </if>
-      <if test="desc != null">
-        #{desc,jdbcType=VARCHAR},
-      </if>
       <if test="dom != null">
         #{dom,jdbcType=LONGVARCHAR},
       </if>
@@ -128,9 +118,6 @@
       <if test="enctype != null">
         enctype = #{enctype,jdbcType=VARCHAR},
       </if>
-      <if test="desc != null">
-        desc = #{desc,jdbcType=VARCHAR},
-      </if>
       <if test="dom != null">
         dom = #{dom,jdbcType=LONGVARCHAR},
       </if>
@@ -149,7 +136,6 @@
       action = #{action,jdbcType=VARCHAR},
       method = #{method,jdbcType=VARCHAR},
       enctype = #{enctype,jdbcType=VARCHAR},
-      desc = #{desc,jdbcType=VARCHAR},
       dom = #{dom,jdbcType=LONGVARCHAR},
       css = #{css,jdbcType=LONGVARCHAR},
       js = #{js,jdbcType=LONGVARCHAR}
@@ -160,8 +146,7 @@
     set form_id = #{formId,jdbcType=BIGINT},
       action = #{action,jdbcType=VARCHAR},
       method = #{method,jdbcType=VARCHAR},
-      enctype = #{enctype,jdbcType=VARCHAR},
-      desc = #{desc,jdbcType=VARCHAR}
+      enctype = #{enctype,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

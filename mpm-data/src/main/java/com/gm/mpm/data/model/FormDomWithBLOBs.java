@@ -7,8 +7,8 @@ public class FormDomWithBLOBs extends FormDom {
 
     private String js;
 
-    public FormDomWithBLOBs(Long id, Long formId, String action, String method, String enctype, String desc, String dom, String css, String js) {
-        super(id, formId, action, method, enctype, desc);
+    public FormDomWithBLOBs(Long id, Long formId, String action, String method, String enctype, String dom, String css, String js) {
+        super(id, formId, action, method, enctype);
         this.dom = dom;
         this.css = css;
         this.js = js;
